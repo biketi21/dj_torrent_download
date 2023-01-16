@@ -12,9 +12,9 @@ def download_torrent(magnet_link, user_id):
     params = {
         "save_path": os.path.join(MEDIA_ROOT, "userID_" + str(user_id)),
         "storage_mode": lt.storage_mode_t(2),
-        "paused": False,
-        "auto_managed": True,
-        "duplicate_is_error": True,
+        # "paused": False,
+        # "auto_managed": True,
+        # "duplicate_is_error": True,
     }
 
     link = magnet_link
