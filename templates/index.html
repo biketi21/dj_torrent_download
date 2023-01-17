@@ -1,5 +1,6 @@
 {% extends "account/base.html" %}
 {% load socialaccount %}
+{% load string_extras %}
 
 <!DOCTYPE html>
 <html>
@@ -13,25 +14,42 @@
     <link rel="stylesheet" href="">
 </head>
 {% block content %}
+
 <body>
     <h1>Home</h1>
     {% if user.is_authenticated %}
     <p>Welcome, you are logged in as user {{ user.firstname }}</p>
     <div class="col-md-3">
         <form class="magnet_link" method="POST" action="{% url 'home' %}">
-        {% csrf_token %}
+            {% csrf_token %}
             <!-- Magnet Link input -->
             <div class="form-outline mb-4">
                 <input type="text" name='magnet_link' required id="id_magnet_link" class="form-control" />
                 <label class="form-label" for="id_magnet_link">Input Magnet Link</label>
             </div>
-            <button type="submit" class="btn btn-primary mb-4">Submit</button
-        </form>
-    {% else %}
-    <a href="{% provider_login_url 'google' %} ">Login with Google.</a>
-    {% endif %}
+            <button type="submit" class="btn btn-primary mb-4">Submit</button </form>
+            {% else %}
+            <a href="{% provider_login_url 'google' %} ">Login with Google.</a>
+            {% endif %}
+    </div>
+    <hr>
+    <div class="col-md-6">
+    Donde Esta Elisa Donde Esta Elisa
+            {% if user.is_authenticated %}
 
-    <script src="" async defer></script>
+            {% for file in final_lst %}
+            <ul>
+                <li>
+                    <a href="{{MEDIA_URL}}{{file}} ">{{ file|split_str }} </a>
+                </li>
+            </ul>
+            {% endfor %}
+    </div>
+
+            {% endif %}
+
+            <script src="" async defer></script>
 </body>
 {% endblock %}
+
 </html>
