@@ -1,0 +1,12 @@
+{% load string_extras %}
+{% if user.is_authenticated %}
+
+{% for file in final_lst %}
+    <ul>
+        <li>
+            <a href="{{MEDIA_ROOT}} {{ file|remove_prefix }} ">{{ file|split_str }} </a>
+        </li>
+    </ul>
+{% endfor %}
+
+{% endif %}

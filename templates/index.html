@@ -1,6 +1,6 @@
 {% extends "account/base.html" %}
 {% load socialaccount %}
-{% load string_extras %}
+
 
 <!DOCTYPE html>
 <html>
@@ -27,26 +27,18 @@
                 <input type="text" name='magnet_link' required id="id_magnet_link" class="form-control" />
                 <label class="form-label" for="id_magnet_link">Input Magnet Link</label>
             </div>
-            <button type="submit" class="btn btn-primary mb-4">Submit</button </form>
+            <button type="submit" class="btn btn-primary mb-4">Submit</button> 
+        </form>
+
             {% else %}
             <a href="{% provider_login_url 'google' %} ">Login with Google.</a>
             {% endif %}
     </div>
     <hr>
-    <div class="col-md-6">
+    <div class="col-md-6" hx-get="/files" hx-trigger="load, every 300s" >
     Donde Esta Elisa Donde Esta Elisa
-            {% if user.is_authenticated %}
-
-            {% for file in final_lst %}
-            <ul>
-                <li>
-                    <a href="{{MEDIA_URL}}{{file}} ">{{ file|split_str }} </a>
-                </li>
-            </ul>
-            {% endfor %}
+             {% include 'index-files.html' %}
     </div>
-
-            {% endif %}
 
             <script src="" async defer></script>
 </body>

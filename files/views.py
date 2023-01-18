@@ -1,21 +1,23 @@
 import os
 from django.shortcuts import render
-from files.tasks import download_torrent
+from files.tasks import download_torrent  # , other_func
 from django_base_conf.settings import MEDIA_ROOT
 
 # Create your views here.
 def home(request):
     if request.method == "POST":
         magnet_link = request.POST["magnet_link"]
+        # TEST other_link = request.POST["other_link"]
+
+        # TEST other_func.delay(other_link)
 
         user_id = request.user.id
-        print(user_id, magnet_link)
         download_torrent.delay(magnet_link, user_id)
 
     return render(request, "index.html")
 
 
-def files(request):
+def files_lst(request):
     if request.method == "GET":
         user_id = request.user.id
 
@@ -28,7 +30,7 @@ def files(request):
                 file_lst.append(os.path.join(root, file))
 
         for name in file_lst:
-            name.strip("/home/biketi21/Django9/torr/torr/media/")
+            # name.strip("/home/biketi21/Django9/torr/torr/media/")
             final_lst.append(name)
 
-    return final_lst
+    return render(request, "index-files.html", {"final_lst": final_lst})
