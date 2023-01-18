@@ -1,54 +1,11 @@
 
-# Tweaked allauth Templates.
+# django_torrent_download
 
-This is a personal project made to save me the hustle of setting up authentication everytime I start a new Django Project.
+This is a django webapp project to download files from magnet links in the cloud and save the file to local cloud storage.
 
-I use django-allauth, and as you know its templates are unstyled. (not visually appealing.)  
-I make use of MDBootstrap to style the basic authentication templates from the MDB directory in the static folder.  
-I added a navbar for ease of use, acknowledging how uncormfortable styling is to backend developers.
+I am yet to make it professional, including cloud storage etcetera.
 
-I make use of a custom user model with both the firstname and email field, using the email field as the username field. This is in the 'accounts' app.
-
-### just a snippet:
-
-```python
-class Account(AbstractBaseUser, PermissionsMixin):
-    firstname = models.CharField(max_length=30)
-    email = models.EmailField(max_length=30, unique=True)
-    date_joined = models.DateTimeField(auto_now_add=True)
-    last_login = models.DateTimeField(auto_now_add=True)
-    is_active = models.BooleanField(default=True)
-    is_staff = models.BooleanField(default=False)
-    is_superuser = models.BooleanField(default=False)
-
-    objects = AccountManager()
-
-    USERNAME_FIELD = "email"
-    REQUIRED_FIELDS = ["firstname"]
-```
-
-### Installation
-
-Clone this repository to your local environment:
-
-```bash
-git clone https://github.com/biketi21/django_base_conf.git
-```
-
-then install dependencies like so:
-
-```bash
-pip3 -r install requirements.txt
-```
-
-spin up a demo:
-
-```bash
-python3 manage.py runserver
-```
-
-and make the neccesary tweaks that suit your needs.
-
+Contributions are welcome
 
 ### Contributing
 
