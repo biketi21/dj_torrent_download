@@ -6,12 +6,6 @@ from django_base_conf.settings import MEDIA_ROOT
 from celery import shared_task
 
 
-# @shared_task
-# def other_func(other_link):
-#    time.sleep(30)
-#    print(other_link)
-
-
 @shared_task()
 def download_torrent(magnet_link, user_id):
     print("Now beginning.")
