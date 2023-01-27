@@ -1,4 +1,5 @@
 from django.db import models
+from shortuuid.django_fields import ShortUUIDField
 from django.contrib.auth.models import (
     AbstractBaseUser,
     BaseUserManager,
@@ -34,6 +35,7 @@ class AccountManager(BaseUserManager):
 
 
 class Account(AbstractBaseUser, PermissionsMixin):
+    id = ShortUUIDField(primary_key=True, max_length=15, prefix="id_")
     firstname = models.CharField(max_length=30)
     email = models.EmailField(max_length=30, unique=True)
     date_joined = models.DateTimeField(auto_now_add=True)

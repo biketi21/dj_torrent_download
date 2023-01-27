@@ -18,7 +18,7 @@ def files_lst(request):
     if request.method == "GET":
         user_id = request.user.id
 
-        path = os.path.join(MEDIA_ROOT, "userID_" + str(user_id))
+        path = os.path.join(MEDIA_ROOT, "UserID_" + str(user_id))
         file_lst = []
         final_lst = []
 

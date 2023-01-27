@@ -8,15 +8,15 @@ from celery import shared_task
 
 @shared_task()
 def download_torrent(magnet_link, user_id):
-    if not os.path.exists(os.path.join(MEDIA_ROOT, "userID_" + str(user_id))):
-        os.makedirs(os.path.join(MEDIA_ROOT, "userID_" + str(user_id)))
+    if not os.path.exists(os.path.join(MEDIA_ROOT, "UserID_" + str(user_id))):
+        os.makedirs(os.path.join(MEDIA_ROOT, "UserID_" + str(user_id)))
 
     print("Now beginning.")
     ses = lt.session()
     ses.listen_on(6881, 6891)
 
     params = {
-        "save_path": os.path.join(MEDIA_ROOT, "userID_" + str(user_id)),
+        "save_path": os.path.join(MEDIA_ROOT, "UserID_" + str(user_id)),
         "storage_mode": lt.storage_mode_t(2),
         # "paused": False,
         # "auto_managed": True,
