@@ -1,5 +1,5 @@
 
-# django_torrent_download
+# dj_torrent_download
 
 This is a django webapp project to download files from magnet links in the cloud and save the file to local cloud storage.
 
