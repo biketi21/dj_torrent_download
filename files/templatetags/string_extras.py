@@ -1,4 +1,5 @@
 from django import template
+from django.conf import settings
 from django.template.defaultfilters import stringfilter
 
 register = template.Library()
@@ -15,7 +16,7 @@ def split_str(str):
 @register.filter
 @stringfilter
 def remove_prefix(input_string):
-    prefix = "/home/biketi21/Django9/torr/torr"
+    prefix = str(settings.BASE_DIR)
     if prefix and input_string.startswith(prefix):
         return input_string[len(prefix) :]
     return input_string
